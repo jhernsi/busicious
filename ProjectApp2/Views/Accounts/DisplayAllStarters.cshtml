@@ -1,0 +1,167 @@
+﻿@using ProjectDBModel
+
+
+@model IEnumerable<ProjectDBModel.AccountProjectVM>
+@{
+    ViewBag.Title = "List of Starters";
+}
+
+
+@*@foreach (var item in Model)
+    {
+
+        string c = item.Account.Email;
+        @Html.DisplayFor(modelitem => item.Account.Email)
+
+        for (int i = 0; i < item.RelatedProjects.Count(); i++)
+        {
+
+            @Html.DisplayFor(model => item.RelatedProjects[i].PName)
+        }
+
+    }*@
+
+
+<!--main-->
+<div class="container" id="main">
+    <div class="text-center" >
+        <br />
+        <br />
+        <br />
+        <p class="text-muted text-center glyphicon-asterisk" >The #1 Platform in Startup Funding
+           Busicious's SaaS funding platform provides all the tools entrepreneurs need to manage their startup funding process, from pitch to exit. Upload your pitch video, describe your team, connect with investors, and manage your post-investment relationships. Investors have already funded 1800+ startups in the last twelve months!
+        </p>
+        <br /> 
+        <br />
+    </div>
+    <div class="row">
+
+        @if (Model != null)
+        {
+
+            foreach (var item in Model)
+            {
+                <div class="col-sm-4">
+
+                    <div class="panel panel-default">
+                        <div class="panel-thumbnail text-center img-responsive">
+                            @{ string picName = item.Account.CompanyLogo;}
+                            @if (picName != null)
+                            {
+                                @*<img src="~/Content/Uploads/@(picName)" alt="@(picName)_alt" width="350" class="img-responsive center-block" />*@
+                                //@Html.Raw(@Html.ActionLink("[replacetext]", "Index", "Home").ToHtmlString().Replace("[replacetext]", "<img src=\"/assets/img/logo.png\" ... />"))
+                                <a href='@Url.Action("UserProfile", "Accounts", new { id = item.Account.Id })'>
+                                    @*<img src='@Url.Content("~/images/imageName.png")' />*@
+                                    <img src="~/Content/Uploads/@(picName)" alt="@(picName)_alt" width="350" class="img-responsive center-block" />
+                                </a>
+
+                            }
+                            else
+                            {
+                                <img src="//placehold.it/450X300/DD66DD/FFF" class="img-responsive">
+                            }
+                           
+                        </div>
+                        <div class="panel-body">
+                            <p class="lead">@Html.DisplayFor(model => item.Account.Company)</p>
+
+                            @if (Model != null && (item.Account.About != null) && !String.IsNullOrWhiteSpace(item.Account.About))
+                            {
+                                if (item.Account.About.Length > 100)
+                                {
+                                    string aboutLess = item.Account.About.ToString().Substring(0, 100);
+                                    aboutLess = String.Format("{0} {1}", aboutLess, "...");
+
+                                    string aboutMore = item.Account.About.ToString().Substring(100);
+                                    aboutMore = String.Format("{0} {1}", aboutMore, "");
+
+                                    <p>
+                                        @Html.DisplayFor(model => aboutLess)
+                                    </p>
+                                    @*<p id="aboutmore" class="collapse">
+                                             @Html.DisplayFor(model => aboutMore)
+                                         </p>
+
+                                        <button type="button" class="btn btn-primary btn-xs pull-right" id="showMorebtn" onclick="" data-toggle="collapse" data-target="#aboutmore">
+                                             <span class="glyphicon glyphicon-chevron-down"></span>
+                                         </button>*@
+                                }
+                                else
+                                {
+                                    <p>@Html.DisplayFor(model => item.Account.About)</p>
+                                }
+                            }
+                            else
+                            {
+                                <div class="alert alert-warning" style="margin:3%;  height:30%; font-size:70%">
+                                    <strong>Ohh!</strong> This Account doesn't have enought info...
+                                </div>
+                            }
+
+                            @{var accNum = @item.Account.Id.ToString();}
+
+                            @if (item.RelatedProjects.Count() > 0)
+                            {
+                                
+                                <table class="table table-condensed" style="border-collapse:collapse;">
+
+                                    @*<thead>
+                                        <tr>
+                                            <th>Projects</th>
+                                        </tr>
+                                    </thead>*@
+                                    @for (int i = 0; i < item.RelatedProjects.Count(); i++)
+                                    {
+                                        string pID = item.RelatedProjects[i].Id.ToString();
+                                        string dataTarget = "dtarget_"+ accNum + "_" + pID+ "_" + i;
+
+                                        <tbody>
+                                            <tr data-toggle="collapse" data-target="#@(dataTarget)" class="accordion-toggle">
+                                                <td>
+                                                    <button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button>
+                                                </td>
+                                                <td>@Html.DisplayFor(model => item.RelatedProjects[i].PName)</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td colspan="12" class="hiddenRow">
+                                                    <div class="accordian-body collapse" id="@(dataTarget)">
+                                                        <table class="table table-striped">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>@Html.DisplayFor(model => item.RelatedProjects[i].PSubHeading)</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    }
+                                </table>
+                            }
+                            else
+                            {
+
+                            }
+
+
+                        </div>
+                    </div>
+
+
+                </div><!--/col-->
+            }
+        }
+        else
+        {
+
+            <div class="alert alert-warning">
+            <strong>Ohh...!</strong> There is no Starter Account.
+            </div>
+
+        }
+        
+    </div><!--/main row-->
+</div>

@@ -1,0 +1,293 @@
+﻿@model ProjectDBModel.Account
+
+
+@{
+    ViewBag.Title = "UserProfile";
+}
+
+<style>
+
+
+
+
+</style>
+
+<div class="container-full">
+
+    <div class="jumbotron">
+        <div>
+            <div class="row">
+                <div class="col-lg-12 text-center v-center">
+                    <h1 class="">
+                        @if (Html.DisplayFor(model => model.Company) != null)
+                        {
+                            @Html.DisplayFor(model => model.Company)
+                        }
+                        else
+                        { 
+                            @:Company Name
+                        }
+                   </h1>
+                    <p class="lead">Leading to an Innovation!</p>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- /container full -->
+    <div class="container-full">
+        <div class="row">
+            <div class="col-md-4" style="height:500px">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center v-center img-circle">
+                        <img src="http://placehold.it/350x250" alt="" class="img-responsive center-block" />
+                    </div>
+                    <div class="panel-body">
+
+                        <table class="table">
+                            <tr class="">
+                            <tr>
+                                <td>User Name</td>
+                                <td>@Html.DisplayFor(model => model.UserName)</td>
+                            </tr>
+                            <tr>
+                                <td>Name</td>
+                                <td>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Company)</td>
+                                <td>@Html.DisplayFor(model => model.Company)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.UserName)</td>
+                                <td>@Html.DisplayFor(model => model.UserName)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Phone)</td>
+                                <td>@Html.DisplayFor(model => model.Phone)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.CellPhone)</td>
+                                <td>@Html.DisplayFor(model => model.CellPhone)</td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td>@Html.DisplayFor(model => model.Street) , @Html.DisplayFor(model => model.PostalCode)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.City)</td>
+                                <td>@Html.DisplayFor(model => model.City)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Country)</td>
+                                <td>@Html.DisplayFor(model => model.Country)</td>
+                            </tr>
+
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Email)</td>
+                                <td>@Html.DisplayFor(model => model.Email)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Website)</td>
+                                <td>@Html.DisplayFor(model => model.Website)</td>
+                            </tr>
+
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.AccountType.Type)</td>
+                                <td>@Html.DisplayFor(model => model.AccountType.Type)</td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <!--About Panel-->
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="container">
+                            <!-- About Field -->
+                            <div class="row">
+                                About:  @Html.DisplayFor(model => model.About)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Panel-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h4 class="">
+                                    Projects
+                                </h4>
+                            </div>
+                            <div class="col-lg-2 col-lg-push-2 text-right">
+                                <form class="">
+                                    <button type="button" class="btn btn-success btn pull-right">Add Project</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="panel-body">
+                        <div class="container">
+                            <!-- Page Heading -->
+                            <div class="row">
+
+                            </div>
+                            <!-- /.row -->
+                            <!-- Project One -->
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <a href="#">
+                                        <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+                                    </a>
+                                </div>
+                                <div class="col-md-5">
+                                    <h3>Project One</h3>
+                                    <h4>Subheading</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+                                    <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <!-- Project TWO -->
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <a href="#">
+                                        <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+                                    </a>
+                                </div>
+                                <div class="col-md-5">
+                                    <h3>Project Two</h3>
+                                    <h4>Subheading</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+                                    <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Connections Panel-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h4 class="">
+                                    Connections
+                                </h4>
+                            </div>
+                            <div class="col-lg-2 col-lg-push-2 text-right">
+                                <form class="">
+                                    <button type="button" class="btn btn-success btn pull-right ">Add Connections</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="container">
+                            <!-- Project One -->
+                            <div class="row">
+                                
+                                <div class="col-md-5 col-lg-12">
+                                    <div class='list-group gallery'>
+                                        <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                                            <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x520.png">
+                                                <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
+                                                <div class='text-right'>
+                                                    <small class='text-muted'>Image Title</small>
+                                                </div> <!-- text-right / end -->
+                                            </a>
+                                        </div> <!-- col-6 / end -->
+                                        <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                                            <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
+                                                <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
+                                                <div class='text-right'>
+                                                    <small class='text-muted'>Image Title</small>
+                                                </div> <!-- text-right / end -->
+                                            </a>
+                                        </div> <!-- col-6 / end -->
+                                        <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                                            <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
+                                                <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
+                                                <div class='text-right'>
+                                                    <small class='text-muted'>Image Title</small>
+                                                </div> <!-- text-right / end -->
+                                            </a>
+                                        </div> <!-- col-6 / end -->
+                                        <div class="col-sm-4 col-xs-6 col-md-3 col-lg-3">
+                                            <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
+                                                <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
+                                                <div class='text-right'>
+                                                    <small class='text-muted'>Image Title</small>
+                                                </div> <!-- text-right / end -->
+                                            </a>
+                                        </div> <!-- col-6 / end -->
+ 
+                                        
+                                        
+                                    </div> <!-- list-group / end -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="pull-right">
+                                    <br />
+                                    <a class="btn btn-primary" href="#">View Connections <span class="glyphicon glyphicon-chevron-right"></span></a>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Pagination -->
+    <div class="row text-center">
+        <div class="col-lg-12">
+            <ul class="pagination">
+                <li>
+                    <a href="#">&laquo;</a>
+                </li>
+                <li class="active">
+                    <a href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                </li>
+                <li>
+                    <a href="#">4</a>
+                </li>
+                <li>
+                    <a href="#">5</a>
+                </li>
+                <li>
+                    <a href="#">&raquo;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>

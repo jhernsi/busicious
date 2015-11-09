@@ -1,0 +1,90 @@
+﻿@model ProjectDBModel.Project
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PSubHeading)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PSubHeading)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PInfo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PLogo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PLogo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRatings)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRatings)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReqInvestment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReqInvestment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.AccountType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.FirstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

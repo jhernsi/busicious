@@ -1,0 +1,296 @@
+﻿@model ProjectDBModel.Account
+
+
+@{
+    ViewBag.Title = "UserProfile";
+}
+
+
+
+<div class="container-full">
+
+    <div class="jumbotron">
+        <div>
+            <div class="row">
+                <div class="col-lg-12 text-center v-center">
+                    <h1 class="">
+                        @if (Model.Company != null)
+                        {
+                            @Html.DisplayFor(model => model.Company)
+                        }
+                        else
+                        {
+                            @:Company Name
+                        }
+                   </h1>
+                    <p class="lead">Leading to an Innovation!</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /container full -->
+    <div class="container-full">
+        <div class="row">
+            <div class="col-md-4" style="height:500px">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center v-center img-circle">
+                        @*<img src="http://placehold.it/350x250" alt="" class="img-responsive center-block" />*@
+                        @{ string picName = Model.CompanyLogo;}
+                        @if (picName != null)
+                        {
+                            <img src="~/Content/Uploads/@(picName)" alt="@(picName)_alt" width="350" class="img-responsive center-block" />
+                        }
+                        else
+                        {
+                            <img src="http://placehold.it/350x250" alt="" class="img-responsive center-block" />
+                        }
+                        
+                    </div>
+                    <div class="panel-body">
+
+                        <table class="table">
+                            <tr class="">
+                            <tr>
+                                <td>User Name</td>
+                                <td>@Html.DisplayFor(model => model.UserName)</td>
+                            </tr>
+                            <tr>
+                                <td>Name</td>
+                                <td>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Company)</td>
+                                <td>@Html.DisplayFor(model => model.Company)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.UserName)</td>
+                                <td>@Html.DisplayFor(model => model.UserName)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Phone)</td>
+                                <td>@Html.DisplayFor(model => model.Phone)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.CellPhone)</td>
+                                <td>@Html.DisplayFor(model => model.CellPhone)</td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td>@Html.DisplayFor(model => model.Street) , @Html.DisplayFor(model => model.PostalCode)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.City)</td>
+                                <td>@Html.DisplayFor(model => model.City)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Country)</td>
+                                <td>@Html.DisplayFor(model => model.Country)</td>
+                            </tr>
+
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Email)</td>
+                                <td>@Html.DisplayFor(model => model.Email)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Website)</td>
+                                <td>@Html.DisplayFor(model => model.Website)</td>
+                            </tr>
+
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.AccountType.Type)</td>
+                                <td>@Html.DisplayFor(model => model.AccountType.Type)</td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-8">
+                <!--About Panel-->
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="container">
+                            <!-- About Field -->
+                            <div class="row">
+                                @if (Model != null && (Model.About != null) && !String.IsNullOrWhiteSpace(Model.About))
+                                {
+                                    if (Model.About.Length > 500)
+                                    {
+                                       
+                                        string aboutLess = Model.About.ToString().Substring(0, 500);
+                                        aboutLess = String.Format("{0} {1}", aboutLess, "...");
+
+                                        string aboutMore = Model.About.ToString().Substring(500);
+                                        aboutMore = String.Format("{0} {1}", aboutMore, "");
+
+                                            @Html.DisplayFor(model => aboutLess)
+
+                                            <div id="aboutmore" class="collapse">
+                                                @Html.DisplayFor(model => aboutMore)
+                                            </div>
+                                            <br />
+
+                                            <button type="button" class="btn btn-primary btn-xs pull-right" id="showMorebtn" onclick="toggleForMore()" data-toggle="collapse" data-target="#aboutmore">
+                                                <span class="glyphicon glyphicon-chevron-down"></span></button>
+                                    }
+                                    else
+                                    {
+                                        @Html.DisplayFor(model => model.About)
+                                    }
+
+                                }
+                                else
+                                {
+                                    
+                                    <div class="alert alert-warning" style="margin:3%">
+                                        <strong>Ohh!</strong> This Account doesn't have enought info...
+                                    </div>
+                                    
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Panel-->
+                @*@Html.Partial("~/Views/Projects/_PartialProjectView.cshtml", new ProjectDBModel.Project() { AccountId = Model.Id });*@
+               
+                 @{Html.RenderAction("RelatedProjects", "Projects", Convert.ToInt32(Model.Id)); }
+
+                <!-- Project Panel ENDS-->
+                
+                <!-- Connections Panel-->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h4 class="">
+                                    Connections
+                                </h4>
+                            </div>
+                            <div class="col-lg-2 col-lg-push-2 text-right">
+                                <form class="">
+                                    <button type="button" class="btn btn-success btn-sm btn pull-right ">Add Connections<span class="glyphicon glyphicon-chevron-right"></span></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="container">
+                            <!-- Project One -->
+                            <div class="row">
+                                
+                                <div class="col-md-5 col-lg-12">
+                                    <div class='list-group gallery'>
+                                        <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                                            <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x520.png">
+                                                @*<img class="img-responsive" alt="" src="http://placehold.it/320x320" />*@
+                                                <img src="~/Content/Uploads/Connectionicon.jpg" alt="Connectionicon_alt" width="350" class="img-responsive center-block" />
+                                                <div class='text-right'>
+                                                    <small class='text-muted'>Image Title</small>
+                                                </div> <!-- text-right / end -->
+                                            </a>
+                                        </div> <!-- col-6 / end -->
+                                        <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                                            <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
+                                                <img src="~/Content/Uploads/Connectionicon.jpg" alt="Connectionicon_alt" width="350" class="img-responsive center-block" />
+                                                <div class='text-right'>
+                                                    <small class='text-muted'>Image Title</small>
+                                                </div> <!-- text-right / end -->
+                                            </a>
+                                        </div> <!-- col-6 / end -->
+                                        <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                                            <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
+                                                <img src="~/Content/Uploads/Connectionicon.jpg" alt="Connectionicon_alt" width="350" class="img-responsive center-block" />
+                                                <div class='text-right'>
+                                                    <small class='text-muted'>Image Title</small>
+                                                </div> <!-- text-right / end -->
+                                            </a>
+                                        </div> <!-- col-6 / end -->
+                                        <div class="col-sm-4 col-xs-6 col-md-3 col-lg-3">
+                                            <a class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
+                                                <img src="~/Content/Uploads/Connectionicon.jpg" alt="Connectionicon_alt" width="350" class="img-responsive center-block" />
+                                                <div class='text-right'>
+                                                    <small class='text-muted'>Image Title</small>
+                                                </div> <!-- text-right / end -->
+                                            </a>
+                                        </div> <!-- col-6 / end -->
+ 
+                                        
+                                        
+                                    </div> <!-- list-group / end -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="pull-right">
+                                    <br />
+                                    <a class="btn btn-primary btn-xs" href="#">View Connections <span class="glyphicon glyphicon-chevron-right"></span></a>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    @*@Html.Partial("~/Views/Projects/_RelatedProjects.cshtml", new ProjectDBModel.AccountProjectVM() { Account = new ProjectDBModel.Account() });*@
+
+
+ 
+
+    <!-- Pagination -->
+    <div class="row text-center">
+        <div class="col-lg-12">
+            <ul class="pagination">
+                <li>
+                    <a href="#">&laquo;</a>
+                </li>
+                <li class="active">
+                    <a href="#">1</a>
+                </li>
+                <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                </li>
+                <li>
+                    <a href="#">4</a>
+                </li>
+                <li>
+                    <a href="#">5</a>
+                </li>
+                <li>
+                    <a href="#">&raquo;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+
+        $(document).ready(function(){
+            $("#aboutmore").hide();
+
+        });
+        
+        function toggleForMore() {
+            $("#aboutmore").on("hide.bs.collapse", function () {
+                $("#showMorebtn").html('<span class="glyphicon glyphicon-chevron-down"></span>');
+            });
+            $("#aboutmore").on("show.bs.collapse", function () {
+                $("#showMorebtn").html('<span class="glyphicon glyphicon-chevron-up"></span>');
+            });
+        }
+</script>

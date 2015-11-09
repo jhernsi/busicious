@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1be0561a6d6241a48501d8f41e5d2c56" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="ProjectDBModel.Account" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDBModel.AccountType" Width="1.5" PointX="0.5" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDBModel.Attachment" Width="1.5" PointX="7.5" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDBModel.Comment" Width="1.5" PointX="10.5" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDBModel.Connection" Width="1.5" PointX="5.25" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDBModel.ConnectionStatus" Width="1.5" PointX="7.5" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDBModel.Link" Width="1.5" PointX="5.25" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDBModel.MailFlag" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDBModel.Mail" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDBModel.Project" Width="1.5" PointX="5.25" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDBModel.Rating" Width="1.5" PointX="12.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDBModel.RatingType" Width="1.5" PointX="15" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDBModel.Team" Width="1.5" PointX="5.25" PointY="33.75" IsExpanded="true" />
+        <AssociationConnector Association="ProjectDBModel.FK_AccountAccountType" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.FK_AccountAttachment" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.FK_AccountComment" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.FK_AccountProject" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.FK_AccountRating" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.FK_AccountTeam" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.FK_MailAttachment" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.FK_ProjectAttachment" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.FK_CommentRating" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.FK_ProjectComment" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.FK_ConnectionConnectionStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.FK_ConnectionsConnectionStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.FK_MailMailFlag" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.FK_MailRating" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.FK_ProjectRating" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.FK_RatingsRatingTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.AccountConnection" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.AccountLink" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDBModel.AccountMail" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

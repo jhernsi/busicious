@@ -1,0 +1,1298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjectDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountConnection">
+          <Key>
+            <PropertyRef Name="Accounts_Id" />
+            <PropertyRef Name="Connections_Id" />
+          </Key>
+          <Property Name="Accounts_Id" Type="int" Nullable="false" />
+          <Property Name="Connections_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountLink">
+          <Key>
+            <PropertyRef Name="Accounts_Id" />
+            <PropertyRef Name="Links_Id" />
+          </Key>
+          <Property Name="Accounts_Id" Type="int" Nullable="false" />
+          <Property Name="Links_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountMail">
+          <Key>
+            <PropertyRef Name="Accounts_Id" />
+            <PropertyRef Name="Mails_Id" />
+          </Key>
+          <Property Name="Accounts_Id" Type="int" Nullable="false" />
+          <Property Name="Mails_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="ConfirmPassword" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Company" Type="nvarchar(max)" />
+          <Property Name="CompanyLogo" Type="nvarchar(max)" />
+          <Property Name="Street" Type="nvarchar(max)" />
+          <Property Name="PostalCode" Type="nvarchar(max)" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="State" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="CellPhone" Type="nvarchar(max)" />
+          <Property Name="FaxNumber" Type="nvarchar(max)" />
+          <Property Name="Website" Type="nvarchar(max)" />
+          <Property Name="About" Type="nvarchar(max)" />
+          <Property Name="AccountType_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccountTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AccountTypeLogo" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Attachments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AttachmentName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AttachmentCreator" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FileType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FileSize" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AttachmentDate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AttachmentTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EncryptedName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProjectsId" Type="int" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+          <Property Name="MailId" Type="int" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentData" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CommentTarget" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CommentDate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CommentTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CommentAttachement" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Connections">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StarterID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="InvestorID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ConnectionDate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ConnectionTime" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConnectionStatuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="StatusLogo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Connection_Id" Type="int" Nullable="false" />
+          <Property Name="ConnectionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Links">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LinkName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LinkUrl" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LinkLogo" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MailFlags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FromEmail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ToEmail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MailedBy" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MailSubject" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MailDate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MailTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MailFlag" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MailAttachment" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MailCc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MailBCc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MailLink" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ReplyToEmail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MailFlag1_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PInfo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PLogo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PRatings" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ReqInvestment" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PStartDate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PEndDate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ratings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RatingCount" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WhoRated" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WhoIsRated" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RatingTime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RatingTypeId" Type="int" Nullable="false" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+          <Property Name="CommentId" Type="int" Nullable="false" />
+          <Property Name="MailId" Type="int" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RatingTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RatingTypeName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Rating_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teams">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamMemberName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TeamGroupID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AccountAccountType">
+          <End Role="AccountTypes" Type="Self.AccountTypes" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="AccountType_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountAttachment">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Attachments" Type="Self.Attachments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Attachments">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountComment">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountConnection_Account">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="AccountConnection" Type="Self.AccountConnection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountConnection">
+              <PropertyRef Name="Accounts_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountConnection_Connection">
+          <End Role="Connections" Type="Self.Connections" Multiplicity="1" />
+          <End Role="AccountConnection" Type="Self.AccountConnection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Connections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountConnection">
+              <PropertyRef Name="Connections_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountLink_Account">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="AccountLink" Type="Self.AccountLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountLink">
+              <PropertyRef Name="Accounts_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountLink_Link">
+          <End Role="Links" Type="Self.Links" Multiplicity="1" />
+          <End Role="AccountLink" Type="Self.AccountLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Links">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountLink">
+              <PropertyRef Name="Links_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountMail_Account">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="AccountMail" Type="Self.AccountMail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountMail">
+              <PropertyRef Name="Accounts_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountMail_Mail">
+          <End Role="Mails" Type="Self.Mails" Multiplicity="1" />
+          <End Role="AccountMail" Type="Self.AccountMail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AccountMail">
+              <PropertyRef Name="Mails_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountProject">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountRating">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ratings">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountTeam">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Teams" Type="Self.Teams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teams">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentRating">
+          <End Role="Comments" Type="Self.Comments" Multiplicity="1" />
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ratings">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConnectionConnectionStatus">
+          <End Role="Connections" Type="Self.Connections" Multiplicity="1" />
+          <End Role="ConnectionStatuses" Type="Self.ConnectionStatuses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Connections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConnectionStatuses">
+              <PropertyRef Name="ConnectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConnectionsConnectionStatuses">
+          <End Role="Connections" Type="Self.Connections" Multiplicity="1" />
+          <End Role="ConnectionStatuses" Type="Self.ConnectionStatuses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Connections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConnectionStatuses">
+              <PropertyRef Name="Connection_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MailAttachment">
+          <End Role="Mails" Type="Self.Mails" Multiplicity="1" />
+          <End Role="Attachments" Type="Self.Attachments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Attachments">
+              <PropertyRef Name="MailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MailMailFlag">
+          <End Role="MailFlags" Type="Self.MailFlags" Multiplicity="1" />
+          <End Role="Mails" Type="Self.Mails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MailFlags">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mails">
+              <PropertyRef Name="MailFlag1_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MailRating">
+          <End Role="Mails" Type="Self.Mails" Multiplicity="1" />
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ratings">
+              <PropertyRef Name="MailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectAttachment">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="Attachments" Type="Self.Attachments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Attachments">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectComment">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectRating">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ratings">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RatingsRatingTypes">
+          <End Role="Ratings" Type="Self.Ratings" Multiplicity="1" />
+          <End Role="RatingTypes" Type="Self.RatingTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ratings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RatingTypes">
+              <PropertyRef Name="Rating_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProjectDBModelStoreContainer">
+          <EntitySet Name="AccountConnection" EntityType="Self.AccountConnection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountLink" EntityType="Self.AccountLink" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountMail" EntityType="Self.AccountMail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountTypes" EntityType="Self.AccountTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Attachments" EntityType="Self.Attachments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Connections" EntityType="Self.Connections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConnectionStatuses" EntityType="Self.ConnectionStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Links" EntityType="Self.Links" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MailFlags" EntityType="Self.MailFlags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mails" EntityType="Self.Mails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ratings" EntityType="Self.Ratings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RatingTypes" EntityType="Self.RatingTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AccountAccountType" Association="Self.FK_AccountAccountType">
+            <End Role="AccountTypes" EntitySet="AccountTypes" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountAttachment" Association="Self.FK_AccountAttachment">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Attachments" EntitySet="Attachments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountComment" Association="Self.FK_AccountComment">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountConnection_Account" Association="Self.FK_AccountConnection_Account">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="AccountConnection" EntitySet="AccountConnection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountConnection_Connection" Association="Self.FK_AccountConnection_Connection">
+            <End Role="Connections" EntitySet="Connections" />
+            <End Role="AccountConnection" EntitySet="AccountConnection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountLink_Account" Association="Self.FK_AccountLink_Account">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="AccountLink" EntitySet="AccountLink" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountLink_Link" Association="Self.FK_AccountLink_Link">
+            <End Role="Links" EntitySet="Links" />
+            <End Role="AccountLink" EntitySet="AccountLink" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountMail_Account" Association="Self.FK_AccountMail_Account">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="AccountMail" EntitySet="AccountMail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountMail_Mail" Association="Self.FK_AccountMail_Mail">
+            <End Role="Mails" EntitySet="Mails" />
+            <End Role="AccountMail" EntitySet="AccountMail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountProject" Association="Self.FK_AccountProject">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountRating" Association="Self.FK_AccountRating">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Ratings" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountTeam" Association="Self.FK_AccountTeam">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Teams" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentRating" Association="Self.FK_CommentRating">
+            <End Role="Comments" EntitySet="Comments" />
+            <End Role="Ratings" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConnectionConnectionStatus" Association="Self.FK_ConnectionConnectionStatus">
+            <End Role="Connections" EntitySet="Connections" />
+            <End Role="ConnectionStatuses" EntitySet="ConnectionStatuses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConnectionsConnectionStatuses" Association="Self.FK_ConnectionsConnectionStatuses">
+            <End Role="Connections" EntitySet="Connections" />
+            <End Role="ConnectionStatuses" EntitySet="ConnectionStatuses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MailAttachment" Association="Self.FK_MailAttachment">
+            <End Role="Mails" EntitySet="Mails" />
+            <End Role="Attachments" EntitySet="Attachments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MailMailFlag" Association="Self.FK_MailMailFlag">
+            <End Role="MailFlags" EntitySet="MailFlags" />
+            <End Role="Mails" EntitySet="Mails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MailRating" Association="Self.FK_MailRating">
+            <End Role="Mails" EntitySet="Mails" />
+            <End Role="Ratings" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectAttachment" Association="Self.FK_ProjectAttachment">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Attachments" EntitySet="Attachments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectComment" Association="Self.FK_ProjectComment">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectRating" Association="Self.FK_ProjectRating">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Ratings" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RatingsRatingTypes" Association="Self.FK_RatingsRatingTypes">
+            <End Role="Ratings" EntitySet="Ratings" />
+            <End Role="RatingTypes" EntitySet="RatingTypes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Company" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CellPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FaxNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="About" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccountType_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AccountType" Relationship="Self.FK_AccountAccountType" FromRole="Accounts" ToRole="AccountTypes" />
+          <NavigationProperty Name="Attachments" Relationship="Self.FK_AccountAttachment" FromRole="Accounts" ToRole="Attachments" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_AccountComment" FromRole="Accounts" ToRole="Comments" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_AccountProject" FromRole="Accounts" ToRole="Projects" />
+          <NavigationProperty Name="Ratings" Relationship="Self.FK_AccountRating" FromRole="Accounts" ToRole="Ratings" />
+          <NavigationProperty Name="Teams" Relationship="Self.FK_AccountTeam" FromRole="Accounts" ToRole="Teams" />
+          <NavigationProperty Name="Connections" Relationship="Self.AccountConnection" FromRole="Accounts" ToRole="Connections" />
+          <NavigationProperty Name="Links" Relationship="Self.AccountLink" FromRole="Accounts" ToRole="Links" />
+          <NavigationProperty Name="Mails" Relationship="Self.AccountMail" FromRole="Accounts" ToRole="Mails" />
+        </EntityType>
+        <EntityType Name="AccountType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountTypeLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_AccountAccountType" FromRole="AccountTypes" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="Attachment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AttachmentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AttachmentCreator" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FileSize" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AttachmentDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AttachmentTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EncryptedName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProjectsId" Type="Int32" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <Property Name="MailId" Type="Int32" Nullable="false" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_AccountAttachment" FromRole="Attachments" ToRole="Accounts" />
+          <NavigationProperty Name="Mail" Relationship="Self.FK_MailAttachment" FromRole="Attachments" ToRole="Mails" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_ProjectAttachment" FromRole="Attachments" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommentTarget" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommentDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommentTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommentAttachement" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_AccountComment" FromRole="Comments" ToRole="Accounts" />
+          <NavigationProperty Name="Ratings" Relationship="Self.FK_CommentRating" FromRole="Comments" ToRole="Ratings" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_ProjectComment" FromRole="Comments" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="Connection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StarterID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InvestorID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ConnectionDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ConnectionTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ConnectionStatuses" Relationship="Self.FK_ConnectionConnectionStatus" FromRole="Connections" ToRole="ConnectionStatuses" />
+          <NavigationProperty Name="ConnectionStatuses1" Relationship="Self.FK_ConnectionsConnectionStatuses" FromRole="Connections" ToRole="ConnectionStatuses" />
+          <NavigationProperty Name="Accounts" Relationship="Self.AccountConnection" FromRole="Connections" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="ConnectionStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StatusLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Connection_Id" Type="Int32" Nullable="false" />
+          <Property Name="ConnectionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Connection" Relationship="Self.FK_ConnectionConnectionStatus" FromRole="ConnectionStatuses" ToRole="Connections" />
+          <NavigationProperty Name="Connection1" Relationship="Self.FK_ConnectionsConnectionStatuses" FromRole="ConnectionStatuses" ToRole="Connections" />
+        </EntityType>
+        <EntityType Name="Link">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LinkName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LinkUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LinkLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.AccountLink" FromRole="Links" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="MailFlag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Mails" Relationship="Self.FK_MailMailFlag" FromRole="MailFlags" ToRole="Mails" />
+        </EntityType>
+        <EntityType Name="Mail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FromEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ToEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailSubject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailFlag" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailAttachment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailCc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailBCc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReplyToEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailFlag1_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Attachments" Relationship="Self.FK_MailAttachment" FromRole="Mails" ToRole="Attachments" />
+          <NavigationProperty Name="MailFlag1" Relationship="Self.FK_MailMailFlag" FromRole="Mails" ToRole="MailFlags" />
+          <NavigationProperty Name="Ratings" Relationship="Self.FK_MailRating" FromRole="Mails" ToRole="Ratings" />
+          <NavigationProperty Name="Accounts" Relationship="Self.AccountMail" FromRole="Mails" ToRole="Accounts" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PRatings" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReqInvestment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PStartDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PEndDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_AccountProject" FromRole="Projects" ToRole="Accounts" />
+          <NavigationProperty Name="Attachments" Relationship="Self.FK_ProjectAttachment" FromRole="Projects" ToRole="Attachments" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_ProjectComment" FromRole="Projects" ToRole="Comments" />
+          <NavigationProperty Name="Ratings" Relationship="Self.FK_ProjectRating" FromRole="Projects" ToRole="Ratings" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RatingCount" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WhoRated" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WhoIsRated" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RatingTime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RatingTypeId" Type="Int32" Nullable="false" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <Property Name="CommentId" Type="Int32" Nullable="false" />
+          <Property Name="MailId" Type="Int32" Nullable="false" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_AccountRating" FromRole="Ratings" ToRole="Accounts" />
+          <NavigationProperty Name="Comment" Relationship="Self.FK_CommentRating" FromRole="Ratings" ToRole="Comments" />
+          <NavigationProperty Name="Mail" Relationship="Self.FK_MailRating" FromRole="Ratings" ToRole="Mails" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_ProjectRating" FromRole="Ratings" ToRole="Projects" />
+          <NavigationProperty Name="RatingTypes" Relationship="Self.FK_RatingsRatingTypes" FromRole="Ratings" ToRole="RatingTypes" />
+        </EntityType>
+        <EntityType Name="RatingType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RatingTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rating_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rating" Relationship="Self.FK_RatingsRatingTypes" FromRole="RatingTypes" ToRole="Ratings" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamMemberName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TeamGroupID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_AccountTeam" FromRole="Teams" ToRole="Accounts" />
+        </EntityType>
+        <Association Name="FK_AccountAccountType">
+          <End Role="AccountTypes" Type="Self.AccountType" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="AccountType_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountAttachment">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="1" />
+          <End Role="Attachments" Type="Self.Attachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Attachments">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountComment">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountProject">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="1" />
+          <End Role="Projects" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountRating">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="1" />
+          <End Role="Ratings" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ratings">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccountTeam">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="1" />
+          <End Role="Teams" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Teams">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MailAttachment">
+          <End Role="Mails" Type="Self.Mail" Multiplicity="1" />
+          <End Role="Attachments" Type="Self.Attachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Attachments">
+              <PropertyRef Name="MailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectAttachment">
+          <End Role="Projects" Type="Self.Project" Multiplicity="1" />
+          <End Role="Attachments" Type="Self.Attachment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Attachments">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentRating">
+          <End Role="Comments" Type="Self.Comment" Multiplicity="1" />
+          <End Role="Ratings" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ratings">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectComment">
+          <End Role="Projects" Type="Self.Project" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConnectionConnectionStatus">
+          <End Role="Connections" Type="Self.Connection" Multiplicity="1" />
+          <End Role="ConnectionStatuses" Type="Self.ConnectionStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Connections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConnectionStatuses">
+              <PropertyRef Name="ConnectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConnectionsConnectionStatuses">
+          <End Role="Connections" Type="Self.Connection" Multiplicity="1" />
+          <End Role="ConnectionStatuses" Type="Self.ConnectionStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Connections">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ConnectionStatuses">
+              <PropertyRef Name="Connection_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MailMailFlag">
+          <End Role="MailFlags" Type="Self.MailFlag" Multiplicity="1" />
+          <End Role="Mails" Type="Self.Mail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MailFlags">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mails">
+              <PropertyRef Name="MailFlag1_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MailRating">
+          <End Role="Mails" Type="Self.Mail" Multiplicity="1" />
+          <End Role="Ratings" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ratings">
+              <PropertyRef Name="MailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectRating">
+          <End Role="Projects" Type="Self.Project" Multiplicity="1" />
+          <End Role="Ratings" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ratings">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RatingsRatingTypes">
+          <End Role="Ratings" Type="Self.Rating" Multiplicity="1" />
+          <End Role="RatingTypes" Type="Self.RatingType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ratings">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RatingTypes">
+              <PropertyRef Name="Rating_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AccountConnection">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+          <End Role="Connections" Type="Self.Connection" Multiplicity="*" />
+        </Association>
+        <Association Name="AccountLink">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+          <End Role="Links" Type="Self.Link" Multiplicity="*" />
+        </Association>
+        <Association Name="AccountMail">
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+          <End Role="Mails" Type="Self.Mail" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ProjectDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="AccountTypes" EntityType="Self.AccountType" />
+          <EntitySet Name="Attachments" EntityType="Self.Attachment" />
+          <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="Connections" EntityType="Self.Connection" />
+          <EntitySet Name="ConnectionStatuses" EntityType="Self.ConnectionStatus" />
+          <EntitySet Name="Links" EntityType="Self.Link" />
+          <EntitySet Name="MailFlags" EntityType="Self.MailFlag" />
+          <EntitySet Name="Mails" EntityType="Self.Mail" />
+          <EntitySet Name="Projects" EntityType="Self.Project" />
+          <EntitySet Name="Ratings" EntityType="Self.Rating" />
+          <EntitySet Name="RatingTypes" EntityType="Self.RatingType" />
+          <EntitySet Name="Teams" EntityType="Self.Team" />
+          <AssociationSet Name="FK_AccountAccountType" Association="Self.FK_AccountAccountType">
+            <End Role="AccountTypes" EntitySet="AccountTypes" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountAttachment" Association="Self.FK_AccountAttachment">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Attachments" EntitySet="Attachments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountComment" Association="Self.FK_AccountComment">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountProject" Association="Self.FK_AccountProject">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountRating" Association="Self.FK_AccountRating">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Ratings" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccountTeam" Association="Self.FK_AccountTeam">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Teams" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MailAttachment" Association="Self.FK_MailAttachment">
+            <End Role="Mails" EntitySet="Mails" />
+            <End Role="Attachments" EntitySet="Attachments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectAttachment" Association="Self.FK_ProjectAttachment">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Attachments" EntitySet="Attachments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentRating" Association="Self.FK_CommentRating">
+            <End Role="Comments" EntitySet="Comments" />
+            <End Role="Ratings" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectComment" Association="Self.FK_ProjectComment">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConnectionConnectionStatus" Association="Self.FK_ConnectionConnectionStatus">
+            <End Role="Connections" EntitySet="Connections" />
+            <End Role="ConnectionStatuses" EntitySet="ConnectionStatuses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConnectionsConnectionStatuses" Association="Self.FK_ConnectionsConnectionStatuses">
+            <End Role="Connections" EntitySet="Connections" />
+            <End Role="ConnectionStatuses" EntitySet="ConnectionStatuses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MailMailFlag" Association="Self.FK_MailMailFlag">
+            <End Role="MailFlags" EntitySet="MailFlags" />
+            <End Role="Mails" EntitySet="Mails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MailRating" Association="Self.FK_MailRating">
+            <End Role="Mails" EntitySet="Mails" />
+            <End Role="Ratings" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectRating" Association="Self.FK_ProjectRating">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Ratings" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RatingsRatingTypes" Association="Self.FK_RatingsRatingTypes">
+            <End Role="Ratings" EntitySet="Ratings" />
+            <End Role="RatingTypes" EntitySet="RatingTypes" />
+          </AssociationSet>
+          <AssociationSet Name="AccountConnection" Association="Self.AccountConnection">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Connections" EntitySet="Connections" />
+          </AssociationSet>
+          <AssociationSet Name="AccountLink" Association="Self.AccountLink">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Links" EntitySet="Links" />
+          </AssociationSet>
+          <AssociationSet Name="AccountMail" Association="Self.AccountMail">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Mails" EntitySet="Mails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectDBModelStoreContainer" CdmEntityContainer="ProjectDBEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="ProjectDBModel.Account">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="CompanyLogo" ColumnName="CompanyLogo" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="AccountType_Id" ColumnName="AccountType_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountTypes">
+            <EntityTypeMapping TypeName="ProjectDBModel.AccountType">
+              <MappingFragment StoreEntitySet="AccountTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="AccountTypeLogo" ColumnName="AccountTypeLogo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attachments">
+            <EntityTypeMapping TypeName="ProjectDBModel.Attachment">
+              <MappingFragment StoreEntitySet="Attachments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AttachmentName" ColumnName="AttachmentName" />
+                <ScalarProperty Name="AttachmentCreator" ColumnName="AttachmentCreator" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="AttachmentDate" ColumnName="AttachmentDate" />
+                <ScalarProperty Name="AttachmentTime" ColumnName="AttachmentTime" />
+                <ScalarProperty Name="EncryptedName" ColumnName="EncryptedName" />
+                <ScalarProperty Name="ProjectsId" ColumnName="ProjectsId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="MailId" ColumnName="MailId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="ProjectDBModel.Comment">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CommentData" ColumnName="CommentData" />
+                <ScalarProperty Name="CommentTarget" ColumnName="CommentTarget" />
+                <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+                <ScalarProperty Name="CommentTime" ColumnName="CommentTime" />
+                <ScalarProperty Name="CommentAttachement" ColumnName="CommentAttachement" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Connections">
+            <EntityTypeMapping TypeName="ProjectDBModel.Connection">
+              <MappingFragment StoreEntitySet="Connections">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StarterID" ColumnName="StarterID" />
+                <ScalarProperty Name="InvestorID" ColumnName="InvestorID" />
+                <ScalarProperty Name="ConnectionDate" ColumnName="ConnectionDate" />
+                <ScalarProperty Name="ConnectionTime" ColumnName="ConnectionTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConnectionStatuses">
+            <EntityTypeMapping TypeName="ProjectDBModel.ConnectionStatus">
+              <MappingFragment StoreEntitySet="ConnectionStatuses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="StatusLogo" ColumnName="StatusLogo" />
+                <ScalarProperty Name="Connection_Id" ColumnName="Connection_Id" />
+                <ScalarProperty Name="ConnectionId" ColumnName="ConnectionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Links">
+            <EntityTypeMapping TypeName="ProjectDBModel.Link">
+              <MappingFragment StoreEntitySet="Links">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LinkName" ColumnName="LinkName" />
+                <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
+                <ScalarProperty Name="LinkLogo" ColumnName="LinkLogo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MailFlags">
+            <EntityTypeMapping TypeName="ProjectDBModel.MailFlag">
+              <MappingFragment StoreEntitySet="MailFlags">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mails">
+            <EntityTypeMapping TypeName="ProjectDBModel.Mail">
+              <MappingFragment StoreEntitySet="Mails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="FromEmail" ColumnName="FromEmail" />
+                <ScalarProperty Name="ToEmail" ColumnName="ToEmail" />
+                <ScalarProperty Name="MailedBy" ColumnName="MailedBy" />
+                <ScalarProperty Name="MailSubject" ColumnName="MailSubject" />
+                <ScalarProperty Name="MailDate" ColumnName="MailDate" />
+                <ScalarProperty Name="MailTime" ColumnName="MailTime" />
+                <ScalarProperty Name="MailFlag" ColumnName="MailFlag" />
+                <ScalarProperty Name="MailAttachment" ColumnName="MailAttachment" />
+                <ScalarProperty Name="MailCc" ColumnName="MailCc" />
+                <ScalarProperty Name="MailBCc" ColumnName="MailBCc" />
+                <ScalarProperty Name="MailLink" ColumnName="MailLink" />
+                <ScalarProperty Name="ReplyToEmail" ColumnName="ReplyToEmail" />
+                <ScalarProperty Name="MailFlag1_Id" ColumnName="MailFlag1_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="ProjectDBModel.Project">
+              <MappingFragment StoreEntitySet="Projects">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+                <ScalarProperty Name="PInfo" ColumnName="PInfo" />
+                <ScalarProperty Name="PLogo" ColumnName="PLogo" />
+                <ScalarProperty Name="PRatings" ColumnName="PRatings" />
+                <ScalarProperty Name="ReqInvestment" ColumnName="ReqInvestment" />
+                <ScalarProperty Name="PStartDate" ColumnName="PStartDate" />
+                <ScalarProperty Name="PEndDate" ColumnName="PEndDate" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="ProjectDBModel.Rating">
+              <MappingFragment StoreEntitySet="Ratings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RatingCount" ColumnName="RatingCount" />
+                <ScalarProperty Name="WhoRated" ColumnName="WhoRated" />
+                <ScalarProperty Name="WhoIsRated" ColumnName="WhoIsRated" />
+                <ScalarProperty Name="RatingTime" ColumnName="RatingTime" />
+                <ScalarProperty Name="RatingTypeId" ColumnName="RatingTypeId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="MailId" ColumnName="MailId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RatingTypes">
+            <EntityTypeMapping TypeName="ProjectDBModel.RatingType">
+              <MappingFragment StoreEntitySet="RatingTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RatingTypeName" ColumnName="RatingTypeName" />
+                <ScalarProperty Name="Rating_Id" ColumnName="Rating_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="ProjectDBModel.Team">
+              <MappingFragment StoreEntitySet="Teams">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TeamMemberName" ColumnName="TeamMemberName" />
+                <ScalarProperty Name="TeamGroupID" ColumnName="TeamGroupID" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AccountConnection" TypeName="ProjectDBModel.AccountConnection" StoreEntitySet="AccountConnection">
+            <EndProperty Name="Accounts">
+              <ScalarProperty Name="Id" ColumnName="Accounts_Id" />
+            </EndProperty>
+            <EndProperty Name="Connections">
+              <ScalarProperty Name="Id" ColumnName="Connections_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="AccountLink" TypeName="ProjectDBModel.AccountLink" StoreEntitySet="AccountLink">
+            <EndProperty Name="Accounts">
+              <ScalarProperty Name="Id" ColumnName="Accounts_Id" />
+            </EndProperty>
+            <EndProperty Name="Links">
+              <ScalarProperty Name="Id" ColumnName="Links_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="AccountMail" TypeName="ProjectDBModel.AccountMail" StoreEntitySet="AccountMail">
+            <EndProperty Name="Accounts">
+              <ScalarProperty Name="Id" ColumnName="Accounts_Id" />
+            </EndProperty>
+            <EndProperty Name="Mails">
+              <ScalarProperty Name="Id" ColumnName="Mails_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

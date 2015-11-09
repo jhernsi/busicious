@@ -1,0 +1,108 @@
+﻿@model ProjectDBModel.Project
+
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PName)
+        </dd>  
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.FirstName)
+        </dd>
+
+        <dd>
+            @Model.AccountId
+        </dd>
+        @{ 
+            ProjectDBModel.Project pr = new ProjectDBModel.Project();
+            ProjectDBModel.ProjectDBEntities db = new ProjectDBModel.ProjectDBEntities();
+
+            ProjectDBModel.Project project = (from p in db.Projects
+                                              where p.AccountId == Model.AccountId
+                                              select p).FirstOrDefault();
+
+            // db.Accounts.Where(model => model.Email.Equals(Account.Email)
+            //          && model.Password.Equals(Account.Password)).FirstOrDefault();
+
+            IList<ProjectDBModel.Project> projList; 
+
+
+          }
+        @project.AccountId
+        @project.PName
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-lg-8">
+                <h4 class="">
+                    Projects
+                </h4>
+            </div>
+            <div class="col-lg-2 col-lg-push-2 text-right">
+                <form class="">
+                    <button type="button" class="btn btn-success btn pull-right">Add Project</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <!-- Page Heading -->
+            <div class="row">
+
+            </div>
+            <!-- /.row -->
+            <!-- Project One -->
+            <div class="row">
+                <div class="col-md-5">
+                    <a href="#">
+                        <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <h3>Project One</h3>
+                    <h4>Subheading</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+                    <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- Project TWO -->
+            <div class="row">
+                <div class="col-md-5">
+                    <a href="#">
+                        <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <h3>Project Two</h3>
+                    <h4>Subheading</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+                    <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+    </div>
+</div>
