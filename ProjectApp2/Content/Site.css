@@ -22,3 +22,40 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.navbar-inverse
+{
+    background-color : lightgrey;
+    
+}
+
+.navbar-nav
+{
+  font-size:medium;
+}
+
+#newNav
+{
+    float:right;
+}
+footer
+{
+    float:right;
+}
+
+.contact-address{
+    text-align:center;
+    font-size : x-large;
+}
+#contact-h1
+{
+    padding-top:20px;
+    padding-bottom:1em;
+}
+
+#img_logo
+{
+    padding-top:10px;
+    height:50px;
+    margin-bottom:5px;
+}
