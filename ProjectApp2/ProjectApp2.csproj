@@ -139,6 +139,19 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\image\1inb.png" />
+    <Content Include="Content\image\banBS.png" />
+    <Content Include="Content\image\connLogo.png" />
+    <Content Include="Content\image\hand.jpg" />
+    <Content Include="Content\image\inbLogo.png" />
+    <Content Include="Content\image\invest.png" />
+    <Content Include="Content\image\logoBS.png" />
+    <Content Include="Content\image\logout.png" />
+    <Content Include="Content\image\pencil.png" />
+    <Content Include="Content\image\profPer.png" />
+    <Content Include="Content\image\projLogo.png" />
+    <Content Include="Content\image\startups.png" />
+    <Content Include="Content\test.css" />
     <Content Include="Content\Uploads\beeLine.jpg" />
     <Content Include="Content\Uploads\blockwatch.jpg" />
     <Content Include="Content\Uploads\busiciouslogo.jpg" />
