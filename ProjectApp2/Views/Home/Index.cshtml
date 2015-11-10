@@ -1,33 +1,39 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-<div class="jumbotron">
-    <h1>Busicious</h1>
-    <p class="lead">
-        <br />
-    </p>
-    <p>Busicious is a professional social networking website for businesses. Its a well-thought-out platform helping startup companies grow and succeed by connecting them to their potential investors. It is the only platform for an investor to browse through, and connect to a list of startup companies based on their ratings and comments. Sign up and start connecting!</p>
-</div>
-
-<div class="row">
-    @*<div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<link rel="stylesheet" type="text/css" href="~/Content/test.css" />
+<div class="section-2">
+    <div class="cont-14">
+        <div class="colwrapper-8">
+            <div class="cont-15">
+                <img src="@Url.Content("~/Content/images/banBS.png")" alt="" class="img-3">
+            </div>
+            <div class="cont-16">
+                <div class="cont-17"><p class="para"><span class="font">Connecting Startups.</span></p></div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="cont-18">
+        <div class="cont-19"><p class="para-2"><span class="font-2">Busicious connects thousands of startups with the perfect investors</span></p></div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>*@
+    <div class="cont-20">
+        <div class="colwrapper-9">
+            <div class="cont-21">
+                <img src="@Url.Content("~/Content/images/invest.png")" alt="" class="img-4">
+                >
+            </div>
+            <div class="cont-22">
+                <a class="button-9" href="@Url.Content("~/Accounts/DisplayAllInvestors")">Browse Investors</a>
+            </div>
+        </div>
+        <div class="colwrapper-10">
+            <div class="cont-23">
+                <img src="@Url.Content("~/Content/images/startups.png")" alt="" class="img-5">
+                >
+            </div>
+            <div class="cont-24">
+                <a class="button-10" href="@Url.Content("~/Accounts/DisplayAllStarters")">Browse Startups</a>
+            </div>
+        </div>
+    </div>
 </div>
