@@ -12,30 +12,22 @@ namespace ProjectDBModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Comment
+    public partial class Post
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Comment()
+        public Post()
         {
-            this.Ratings = new HashSet<Rating>();
+            this.Comments = new HashSet<Comment>();
         }
     
-        public int Id { get; set; }
-        public string CommentData { get; set; }
-        public string CommentTarget { get; set; }
-        public string CommentDate { get; set; }
-        public string CommentTime { get; set; }
-        public string CommentAttachement { get; set; }
+        public int PostId { get; set; }
+        public string PostedBy { get; set; }
+        public string PostDate { get; set; }
+        public string Message { get; set; }
         public int AccountId { get; set; }
-        public int ProjectId { get; set; }
-        public string PostId { get; set; }
-        public int PostPostId { get; set; }
-        public string CommentedBy { get; set; }
     
-        public virtual Account Account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Rating> Ratings { get; set; }
-        public virtual Project Project { get; set; }
-        public virtual Post Post { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual Account Account { get; set; }
     }
 }

@@ -18,10 +18,23 @@ namespace ProjectApp2.Controllers
         private ProjectDBEntities db = new ProjectDBEntities();
 
         // GET: Accounts
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var accounts = db.Accounts.Include(a => a.AccountType);
+        //    return View(accounts.ToList());
+        //}
+
+
+        public ViewResult Index(string q)
         {
-            var accounts = db.Accounts.Include(a => a.AccountType);
-            return View(accounts.ToList());
+            var persons = from p in db.Accounts select p;
+            if (!string.IsNullOrWhiteSpace(q))
+            {
+               
+                persons = persons.Where(p => p.UserName.Contains(q) || p.Company.Contains(q) || p.FirstName.Contains(q));
+                
+            }
+            return View(persons);
         }
         public ActionResult DisplayAllStarters()
         {

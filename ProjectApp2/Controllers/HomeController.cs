@@ -13,6 +13,9 @@ namespace ProjectApp2.Controllers
             return View();
         }
 
+
+
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -24,6 +27,11 @@ namespace ProjectApp2.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult WallPost()
+        {
             return View();
         }
     }

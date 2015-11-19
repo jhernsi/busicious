@@ -25,6 +25,7 @@ namespace ProjectDBModel
             this.Connections = new HashSet<Connection>();
             this.Links = new HashSet<Link>();
             this.Mails = new HashSet<Mail>();
+            this.Posts = new HashSet<Post>();
         }
     
         public int Id { get; set; }
@@ -66,5 +67,7 @@ namespace ProjectDBModel
         public virtual ICollection<Link> Links { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mail> Mails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Post> Posts { get; set; }
     }
 }

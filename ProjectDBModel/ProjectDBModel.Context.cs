@@ -38,5 +38,6 @@ namespace ProjectDBModel
         public virtual DbSet<Rating> Ratings { get; set; }
         public virtual DbSet<RatingType> RatingTypes { get; set; }
         public virtual DbSet<Team> Teams { get; set; }
+        public virtual DbSet<Post> Posts { get; set; }
     }
 }

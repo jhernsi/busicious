@@ -5,6 +5,25 @@
 @{
     ViewBag.Title = "List of Starters";
 }
+@*Code for implementing search bar for searching for starters on the starters page*@
+
+
+<h2>Search People</h2>
+@using (Html.BeginForm("Index", "Accounts", FormMethod.Get))
+{
+    <div>
+        <text>For Starters : </text><input type="text" name="q" />&nbsp;
+        <input type="submit" value="Search" id="btnSubmit" />
+    </div>
+}
+
+
+
+
+
+
+
+
 
 
 @*@foreach (var item in Model)

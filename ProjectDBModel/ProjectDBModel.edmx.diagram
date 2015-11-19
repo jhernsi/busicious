@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="ProjectDBModel.Account" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectDBModel.AccountType" Width="1.5" PointX="0.5" PointY="14.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectDBModel.Attachment" Width="1.5" PointX="7.5" PointY="21.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDBModel.Comment" Width="1.5" PointX="10.5" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDBModel.Comment" Width="1.5" PointX="9.625" PointY="12.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectDBModel.Connection" Width="1.5" PointX="5.25" PointY="18.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectDBModel.ConnectionStatus" Width="1.5" PointX="7.5" PointY="18.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectDBModel.Link" Width="1.5" PointX="5.25" PointY="21.375" IsExpanded="true" />
@@ -37,6 +37,9 @@
         <AssociationConnector Association="ProjectDBModel.AccountConnection" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectDBModel.AccountLink" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectDBModel.AccountMail" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProjectDBModel.Post" Width="1.5" PointX="9.375" PointY="10" />
+        <AssociationConnector Association="ProjectDBModel.PostComment" />
+        <AssociationConnector Association="ProjectDBModel.PostAccount" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

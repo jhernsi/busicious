@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/07/2015 00:32:01
--- Generated from EDMX file: \\vmware-host\Shared Folders\Downloads\ProjectSolution_V1_Bisicious\ProjectSolution\ProjectDBModel\ProjectDBModel.edmx
+-- Date Created: 11/19/2015 01:06:49
+-- Generated from EDMX file: \\vmware-host\Shared Folders\Desktop\GitHub\busicious\ProjectDBModel\ProjectDBModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -26,23 +26,23 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_AccountComment]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Comments] DROP CONSTRAINT [FK_AccountComment];
 GO
-IF OBJECT_ID(N'[dbo].[FK_AccountConnection_Account]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AccountConnection] DROP CONSTRAINT [FK_AccountConnection_Account];
+IF OBJECT_ID(N'[dbo].[FK_AccountConnection_Accounts]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AccountConnection] DROP CONSTRAINT [FK_AccountConnection_Accounts];
 GO
-IF OBJECT_ID(N'[dbo].[FK_AccountConnection_Connection]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AccountConnection] DROP CONSTRAINT [FK_AccountConnection_Connection];
+IF OBJECT_ID(N'[dbo].[FK_AccountConnection_Connections]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AccountConnection] DROP CONSTRAINT [FK_AccountConnection_Connections];
 GO
-IF OBJECT_ID(N'[dbo].[FK_AccountLink_Account]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AccountLink] DROP CONSTRAINT [FK_AccountLink_Account];
+IF OBJECT_ID(N'[dbo].[FK_AccountLink_Accounts]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AccountLink] DROP CONSTRAINT [FK_AccountLink_Accounts];
 GO
-IF OBJECT_ID(N'[dbo].[FK_AccountLink_Link]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AccountLink] DROP CONSTRAINT [FK_AccountLink_Link];
+IF OBJECT_ID(N'[dbo].[FK_AccountLink_Links]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AccountLink] DROP CONSTRAINT [FK_AccountLink_Links];
 GO
-IF OBJECT_ID(N'[dbo].[FK_AccountMail_Account]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AccountMail] DROP CONSTRAINT [FK_AccountMail_Account];
+IF OBJECT_ID(N'[dbo].[FK_AccountMail_Accounts]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AccountMail] DROP CONSTRAINT [FK_AccountMail_Accounts];
 GO
-IF OBJECT_ID(N'[dbo].[FK_AccountMail_Mail]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AccountMail] DROP CONSTRAINT [FK_AccountMail_Mail];
+IF OBJECT_ID(N'[dbo].[FK_AccountMail_Mails]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AccountMail] DROP CONSTRAINT [FK_AccountMail_Mails];
 GO
 IF OBJECT_ID(N'[dbo].[FK_AccountProject]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Projects] DROP CONSTRAINT [FK_AccountProject];
@@ -70,6 +70,12 @@ IF OBJECT_ID(N'[dbo].[FK_MailMailFlag]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_MailRating]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Ratings] DROP CONSTRAINT [FK_MailRating];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PostAccount]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Posts] DROP CONSTRAINT [FK_PostAccount];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PostComment]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Comments] DROP CONSTRAINT [FK_PostComment];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ProjectAttachment]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Attachments] DROP CONSTRAINT [FK_ProjectAttachment];
@@ -123,6 +129,9 @@ IF OBJECT_ID(N'[dbo].[MailFlags]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Mails]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Mails];
+GO
+IF OBJECT_ID(N'[dbo].[Posts]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Posts];
 GO
 IF OBJECT_ID(N'[dbo].[Projects]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Projects];
@@ -201,7 +210,10 @@ CREATE TABLE [dbo].[Comments] (
     [CommentTime] nvarchar(max)  NOT NULL,
     [CommentAttachement] nvarchar(max)  NOT NULL,
     [AccountId] int  NOT NULL,
-    [ProjectId] int  NOT NULL
+    [ProjectId] int  NOT NULL,
+    [PostId] nvarchar(max)  NOT NULL,
+    [PostPostId] int  NOT NULL,
+    [CommentedBy] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -307,6 +319,16 @@ CREATE TABLE [dbo].[Teams] (
 );
 GO
 
+-- Creating table 'Posts'
+CREATE TABLE [dbo].[Posts] (
+    [PostId] int IDENTITY(1,1) NOT NULL,
+    [PostedBy] nvarchar(max)  NOT NULL,
+    [PostDate] nvarchar(max)  NOT NULL,
+    [Message] nvarchar(max)  NOT NULL,
+    [AccountId] int  NOT NULL
+);
+GO
+
 -- Creating table 'AccountConnection'
 CREATE TABLE [dbo].[AccountConnection] (
     [Accounts_Id] int  NOT NULL,
@@ -408,6 +430,12 @@ GO
 ALTER TABLE [dbo].[Teams]
 ADD CONSTRAINT [PK_Teams]
     PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [PostId] in table 'Posts'
+ALTER TABLE [dbo].[Posts]
+ADD CONSTRAINT [PK_Posts]
+    PRIMARY KEY CLUSTERED ([PostId] ASC);
 GO
 
 -- Creating primary key on [Accounts_Id], [Connections_Id] in table 'AccountConnection'
@@ -742,6 +770,36 @@ GO
 CREATE INDEX [IX_FK_AccountMail_Mails]
 ON [dbo].[AccountMail]
     ([Mails_Id]);
+GO
+
+-- Creating foreign key on [PostPostId] in table 'Comments'
+ALTER TABLE [dbo].[Comments]
+ADD CONSTRAINT [FK_PostComment]
+    FOREIGN KEY ([PostPostId])
+    REFERENCES [dbo].[Posts]
+        ([PostId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PostComment'
+CREATE INDEX [IX_FK_PostComment]
+ON [dbo].[Comments]
+    ([PostPostId]);
+GO
+
+-- Creating foreign key on [AccountId] in table 'Posts'
+ALTER TABLE [dbo].[Posts]
+ADD CONSTRAINT [FK_PostAccount]
+    FOREIGN KEY ([AccountId])
+    REFERENCES [dbo].[Accounts]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PostAccount'
+CREATE INDEX [IX_FK_PostAccount]
+ON [dbo].[Posts]
+    ([AccountId]);
 GO
 
 -- --------------------------------------------------
