@@ -235,6 +235,7 @@
     <Content Include="Views\Accounts\UserProfile_backup.cshtml" />
     <Content Include="Views\Projects\_RelatedProjects.cshtml" />
     <Content Include="Views\Home\WallPost.cshtml" />
+    <Content Include="Views\Home\RReader.cshtml" />
     <None Include="Views\Shared\_Layout_backupscshtml" />
     <Content Include="Views\Accounts\Index - Copy.cshtml" />
     <Content Include="Views\Accounts\DisplayAllStarters.cshtml" />

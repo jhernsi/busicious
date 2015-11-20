@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ProjectDBModel.Model.Rss>
+@{
+    ViewBag.Title = "RReader";
+}
+
+<h2>RssReader</h2>
+
+
+<table>
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Link
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="@item.Link" target="_blank">@Html.Encode(item.Title)</a>
+            </td>
+            <td>
+                @System.Web.HttpUtility.HtmlDecode(item.Description)
+
+            </td>
+            <td>
+                <a href="@item.Link" target="_blank">More</a>
+            </td>
+        </tr>
+    }
+
+</table>
+

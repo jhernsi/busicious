@@ -90,6 +90,8 @@
     <Compile Include="Model\AccountType.cs" />
     <Compile Include="Model\Login.cs" />
     <Compile Include="Model\Project.cs" />
+    <Compile Include="Model\Rss.cs" />
+    <Compile Include="Model\RSSReader.cs" />
     <Compile Include="Post.cs">
       <DependentUpon>ProjectDBModel.tt</DependentUpon>
     </Compile>

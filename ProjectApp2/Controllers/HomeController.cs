@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ProjectDBModel.Model;
 
 namespace ProjectApp2.Controllers
 {
@@ -33,6 +34,11 @@ namespace ProjectApp2.Controllers
         public ActionResult WallPost()
         {
             return View();
+        }
+
+        public ActionResult RReader()
+        {
+            return View(RSSReader.GetRssFeed());
         }
     }
 }
